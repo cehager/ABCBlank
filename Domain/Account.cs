@@ -16,8 +16,10 @@ namespace Domain
         public decimal Balance { get; set; }
         public bool IsActive { get; set; }
 
-        public AccountType  Type { get; set; }
+        public AccountType Type { get; set; }
 
         public AccountHolder AccountHolder { get; set; }
         public List<Transaction> Transactions { get; set; }
     }
+}
+

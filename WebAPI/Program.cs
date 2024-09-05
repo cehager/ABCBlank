@@ -1,3 +1,4 @@
+using Infrastructure;
 
 namespace WebAPI
 {
@@ -14,7 +15,13 @@ namespace WebAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDatabase(builder.Configuration);
+            builder.Services.AddRepositories();
+
+
             var app = builder.Build();
+
+
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
