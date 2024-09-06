@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Request
+namespace Common.Requests
 {
     public record CreateAccountHolder(string FirstName, string LastName, DateTime DateOfBirth, string Email, string ContactNumber);
 
