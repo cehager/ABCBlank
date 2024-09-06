@@ -1,5 +1,5 @@
 ﻿using Application.Repositories;
-using Common.Request;
+using Common.Requests;
 using Common.Wrapper;
 using Domain;
 using Mapster;
