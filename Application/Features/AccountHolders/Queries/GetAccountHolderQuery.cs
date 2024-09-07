@@ -31,7 +31,14 @@ namespace Application.Features.AccountHolders.Queries
         {
             var accountHoldersInDb = await _unitOfWork.ReadRepositoryFor<AccountHolder>().GetAllAsync();
 
-            return new ResponseWrapper<List<AccountHolderResponse>>().Success(accountHoldersInDb.Adapt<List<AccountHolderResponse>>());
+            if (accountHoldersInDb.Count > 0)
+            {
+                return new ResponseWrapper<List<AccountHolderResponse>>()
+                    .Success(accountHoldersInDb.Adapt<List<AccountHolderResponse>>());
+            }
+
+            return new ResponseWrapper<List<AccountHolderResponse>>().Failed("No account holders were found.");
+
         }
     }
 }
