@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
                 _respositories = new Hashtable();
             }
 
-            var type = typeof(T).Name;
+            var type = $"{typeof(T).Name}_Read";
             if (!_respositories.ContainsKey(type))
             {
                 var repositoryType = typeof(ReadRepositoryAsync<,>);
@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories
                 _respositories = new Hashtable();
             }
 
-            var type = typeof(T).Name;
+            var type = $"{typeof(T).Name}_Write";
             if (!_respositories.ContainsKey(type))
             {
                 var repositoryType = typeof(WriteRepositoryAsync<,>);
