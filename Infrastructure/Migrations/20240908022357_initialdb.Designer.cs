@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240905011836_initialDb")]
-    partial class initialDb
+    [Migration("20240908022357_initialdb")]
+    partial class initialdb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,8 @@ namespace Infrastructure.Migrations
                     b.Property<int>("AccountHolderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18, 2)");
@@ -55,7 +55,8 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("AccountNumber")
                         .IsUnique()
-                        .HasDatabaseName("IX_Accounts_AccountNumber");
+                        .HasDatabaseName("IX_Accounts_AccountNumber")
+                        .HasFilter("[AccountNumber] IS NOT NULL");
 
                     b.ToTable("Accounts", "Banking");
                 });

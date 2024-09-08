@@ -11,7 +11,7 @@ namespace Domain
 {
     public class Account : BaseEntity<int>
     {
-        public int AccountNumber { get; set; }
+        public string AccountNumber { get; set; }
         public int AccountHolderId { get; set; }
         public decimal Balance { get; set; }
         public bool IsActive { get; set; }
