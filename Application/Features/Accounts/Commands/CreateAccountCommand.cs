@@ -15,13 +15,14 @@ namespace Application.Features.Accounts.Commands
 {
     public class CreateAccountCommand : IRequest<ResponseWrapper<int>>
     {
-        public CreateAccountRequest CreateAccount { get; set; }  //dto
+        public CreateAccountRequest CreateAccount; //{ get; set; }  //dto
+        //public CreateAccountRequest CreateAccount2;
     }
 
     public class CreateAccountCommandHandler(IUnitOfWork<int> unitOfWork)
      : IRequestHandler<CreateAccountCommand, ResponseWrapper<int>>
     {
-        private IUnitOfWork<int> _unitOfWork = unitOfWork;
+        private readonly IUnitOfWork<int> _unitOfWork = unitOfWork;
         public async Task<ResponseWrapper<int>> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
             //Map incoming to Domain Account entity
@@ -33,12 +34,13 @@ namespace Application.Features.Accounts.Commands
             //Activate the account
             account.IsActive = true;
             //Create/Add the account
+            //account = 
             await _unitOfWork.WriteRepositoryFor<Account>().AddAsync(account);
             await _unitOfWork.CommitAsync(cancellationToken);
             //rv = await _unitOfWork.CommitAsync(cancellationToken);
             //if (rv != 0)
             //{
-                //_unitOfWork.WriteRespoistoryFor<Account>().UpdateAccountingSytem(entity, codes, rv);
+                //_unitOfWork.AccountingRespositoryFor<Account>().UpdateAccountingSytem(entity, codes, rv);
                 //commit again
             //}
             return new ResponseWrapper<int>().Success(account.Id, "Account created successfully.");

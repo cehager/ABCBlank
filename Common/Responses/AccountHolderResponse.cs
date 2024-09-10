@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common.Responses
 {
-    public class AccountHolderResponse  //this is the DTO
+    public class AccountHolderResponse   //dto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

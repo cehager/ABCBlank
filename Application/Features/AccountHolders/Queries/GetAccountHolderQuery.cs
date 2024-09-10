@@ -4,6 +4,7 @@ using Common.Wrapper;
 using Domain;
 using Mapster;
 using MediatR;
+using System.Data.Common;
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;
@@ -30,6 +31,7 @@ namespace Application.Features.AccountHolders.Queries
         public async Task<ResponseWrapper<List<AccountHolderResponse>>> Handle(GetAccountHoldersQuery request, CancellationToken cancellationToken)
         {
             var accountHoldersInDb = await _unitOfWork.ReadRepositoryFor<AccountHolder>().GetAllAsync();
+         
 
             if (accountHoldersInDb.Count > 0)
             {

@@ -11,5 +11,7 @@ namespace Application.Repositories
     {
         Task<T> GetByIdAsync(TId id);
         Task<List<T>> GetAllAsync();
+        IQueryable<T> Entities {  get; }
+
     }
 }

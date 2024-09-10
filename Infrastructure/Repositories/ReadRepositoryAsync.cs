@@ -28,5 +28,7 @@ namespace Infrastructure.Repositories
         {
             return await _context.Set<T>().FindAsync(id);
         }
+
+        public IQueryable<T> Entities => _context.Set<T>();
     }
 }

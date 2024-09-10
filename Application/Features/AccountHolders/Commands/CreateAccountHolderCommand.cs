@@ -14,14 +14,15 @@ namespace Application.Features.AccountHolders.Commands
 {
     public class CreateAccountHolderCommand : IRequest<ResponseWrapper<int>>
     {
-        public CreateAccountHolder CreateAccountHolder { get; set; }
-    }
+        public CreateAccountHolder CreateAccountHolder; // { get; set; }
+     }
 
     public class CreateAccountHolderCommandHandler(IUnitOfWork<int> unitOfWork)
       : IRequestHandler<CreateAccountHolderCommand, ResponseWrapper<int>>
     {
         private readonly IUnitOfWork<int> _unitOfWork = unitOfWork;
-
+        
+     
         public async Task<ResponseWrapper<int>> Handle(CreateAccountHolderCommand request, CancellationToken cancellationToken)
         {
             var accountHolder = request.CreateAccountHolder.Adapt<AccountHolder>();

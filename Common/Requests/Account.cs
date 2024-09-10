@@ -8,5 +8,4 @@ using System.Threading.Tasks;
 namespace Common.Requests
 {
     public record CreateAccountRequest(int AccountHolderId, decimal Balance, AccountType Type); //this is a DTO
- 
 }
