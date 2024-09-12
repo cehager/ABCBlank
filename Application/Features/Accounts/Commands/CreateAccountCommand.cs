@@ -15,7 +15,7 @@ namespace Application.Features.Accounts.Commands
 {
     public class CreateAccountCommand : IRequest<ResponseWrapper<int>>
     {
-        public CreateAccountRequest CreateAccount; //{ get; set; }  //dto
+        public CreateAccountRequest RequestRecord; //{ get; set; }  //dto
         //public CreateAccountRequest CreateAccount2;
     }
 
@@ -26,7 +26,7 @@ namespace Application.Features.Accounts.Commands
         public async Task<ResponseWrapper<int>> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
             //Map incoming to Domain Account entity
-            var account = request.CreateAccount.Adapt<Account>(); //data goes from CreateAccount (dto) in domain Account
+            var account = request.RequestRecord.Adapt<Account>(); //data goes from CreateAccount (dto) in domain Account
             //int rv;
             //Generate an account number
             account.AccountNumber = AccountNumberGenerator.GenerateAccountNumber();
@@ -40,7 +40,7 @@ namespace Application.Features.Accounts.Commands
             //rv = await _unitOfWork.CommitAsync(cancellationToken);
             //if (rv != 0)
             //{
-                //_unitOfWork.AccountingRespositoryFor<Account>().UpdateAccountingSytem(entity, codes, rv);
+                //_unitOfWork.AccountingRulesRespositoryFor<Account>().UpdateAccountingRecords(entity, codes, rv);
                 //commit again
             //}
             return new ResponseWrapper<int>().Success(account.Id, "Account created successfully.");

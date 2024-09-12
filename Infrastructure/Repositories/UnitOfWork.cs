@@ -63,6 +63,24 @@ namespace Infrastructure.Repositories
             return (IWriteRepositoryAsync<T, TId>)_respositories[type];
         }
 
+        //public IAccountingRulesRepositoryAsync<T, TId> AccountingRulesRepositoryFor<T>() where T : BaseEntity<TId>
+        //{
+        //    if (_respositories == null)
+        //    {
+        //        _respositories = new Hashtable();
+        //    }
+
+        //    var type = $"{typeof(T).Name}_Write";
+        //    if (!_respositories.ContainsKey(type))
+        //    {
+        //        var repositoryType = typeof(AccountingRulesRepositoryAsync<,>);
+        //        var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T), typeof(TId)), _context);
+        //        _respositories.Add(type, repositoryInstance);
+        //    }
+
+        //    return (IAccountingRulesRepositoryAsync<T, TId>)_respositories[type];
+        //}
+
         public void Dispose()
         {
            Dispose(true);

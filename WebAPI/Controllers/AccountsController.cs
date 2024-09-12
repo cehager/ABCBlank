@@ -12,7 +12,20 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> AddAccountAsync([FromBody] CreateAccountRequest createAccount)
         {
             var response =
-                await Sender.Send(new CreateAccountCommand() { CreateAccount = createAccount });
+                await Sender.Send(new CreateAccountCommand() { RequestRecord = createAccount });
+
+            if (response.IsSuccess)
+            {
+                return Ok(response);
+            }
+
+            return BadRequest(response);
+        }
+
+        [HttpPost("transact")]
+        public async Task<IActionResult> TransactAsync([FromBody] TransactionRequest transaction)
+        {
+            var response = await Sender.Send(new CreateTransactionCommand() { Transaction = transaction });
 
             if (response.IsSuccess)
             {
