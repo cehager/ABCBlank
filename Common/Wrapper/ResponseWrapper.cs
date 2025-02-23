@@ -22,7 +22,7 @@ namespace Common.Wrapper
             return this;
         }
 
-        public ResponseWrapper<T> Failed(string message = null)
+        public ResponseWrapper<T> Failed(string message)
         {
             IsSuccess = false;
             Messages = [message];

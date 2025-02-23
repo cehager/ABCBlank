@@ -14,7 +14,7 @@ namespace Application.Features.AccountHolders.Commands
 {
     public class CreateAccountHolderCommand : IRequest<ResponseWrapper<int>>
     {
-        public CreateAccountHolder CreateAccountHolder; // { get; set; }
+        public CreateAccountHolder CreateAccountHolder; //this is the accountholder record / dto
      }
 
     public class CreateAccountHolderCommandHandler(IUnitOfWork<int> unitOfWork)
