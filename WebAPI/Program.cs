@@ -10,6 +10,9 @@ namespace WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(policy => policy.AddPolicy("BankUI",
+                options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));  
+
             // Add services to the container.
 
             builder.Services.AddControllers()
@@ -26,7 +29,7 @@ namespace WebAPI
             builder.Services.AddApplicationServices();
 
             var app = builder.Build();
-
+            app.UseCors("BankUI");
 
 
             // Configure the HTTP request pipeline.
