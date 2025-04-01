@@ -37,7 +37,7 @@ namespace BankUI.Services
         public async Task<ResponseWrapper<List<AccountHolderResponse>>> GetAllAccountHoldersAsync()
         {
            var response = await _httpClient.GetAsync(AccountHoldersEndpoints.GetAll);
-            return await response.ToResponse<List<AccountHolderResponse>>();    
+            return await response.ToResponse<List<AccountHolderResponse>>();    //should be ToResponseObject
         }
 
         public async Task<ResponseWrapper<int>> UpdateAccountHolderAsync(UpdateAccountHolder updateAccountHolder)

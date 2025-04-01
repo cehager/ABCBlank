@@ -1,0 +1,18 @@
+﻿<MudForm @ref="@_form" Model="UpdateAccountHolderRequest">
+    <MudDialog>
+        <TitleContent>
+            Update Account Holder
+        </TitleContent>
+        <DialogContent>
+            <MudTextField @bind-Value="UpdateAccountHolderRequest.FirstName" Label="First Name" Variant="Variant.Outlined"></MudTextField>
+            <MudTextField @bind-Value="UpdateAccountHolderRequest.LastName" Label="Last Name" Variant="Variant.Outlined"></MudTextField>
+            @* <MudDatePicker Label="Birthday" Editable="true" @bind-Date="UpdateAccountHolderRequest.DateOfBirth" Placeholder=" Select Date" /> *@
+            <MudTextField @bind-Value="UpdateAccountHolderRequest.ContactNumber" Label="Phone" Variant="Variant.Outlined"></MudTextField>
+            <MudTextField @bind-Value="UpdateAccountHolderRequest.Email" Label="Email" Variant="Variant.Outlined"></MudTextField>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="Cancel">Cancel</MudButton>
+            <MudButton Color="Color.Primary" OnClick="SaveAsync">Update</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudForm>

@@ -1,12 +1,16 @@
 ﻿@page "/banking/account-holder-list"
 
 <MudTable Items="@AccountHolders" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+    <ToolBarContent>
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" OnClick="(() => AddAccountHolderAsync())"/>
+    </ToolBarContent>
     <HeaderContent>
         <MudTh>First Name</MudTh>
         <MudTh>Last Name</MudTh>
         <MudTh>Birthday</MudTh>
         <MudTh>Phone</MudTh>
         <MudTh>Email</MudTh>
+        <MudTh>Actions</MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="First Name">@context.FirstName</MudTd>
@@ -14,5 +18,17 @@
         <MudTd DataLabel="Birthday">@context.DateOfBirth.ToString("MM/dd/yyyy")</MudTd>
         <MudTd DataLabel="Phone">@context.ContactNumber</MudTd>
         <MudTd DataLabel="Email">@context.Email</MudTd>
+        <MudTd DataLabel="Actions">
+            <MudMenu Label="Edit" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.KeyboardArrowDown" IconColor="Color.Success">
+                <MudMenuItem OnClick="(() => UpdateAccountHolderAsync(context.Id))">Update</MudMenuItem>
+                <MudMenuItem OnClick="(() => DeleteAsync(context.Id, context.FirstName, context.LastName))">Delete</MudMenuItem>
+             </MudMenu>
+
+  @*           <MudButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="(() => EditAccountHolderAsync(context))"/>
+            <MudButton Icon="@Icons.Material.Filled.Delete" Color="Color.Secondary" Size="Size.Small" OnClick="(() => DeleteAccountHolderAsync(context))"/> *@
+        </MudTd>
     </RowTemplate>
 </MudTable>
+
+@*  <MudToolBar Style="@($"color:{Colors.LightGreen.Accent3}; background:{Colors.BlueGray.Lighten1};")"> *@
+     @* <MudToolBar Style="@($"background:{Colors.BlueGray.Lighten3};")"> *@
