@@ -1,4 +1,5 @@
-﻿using Common.Requests;
+﻿using BankUI.Pages.Banking.Validator;
+using Common.Requests;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
@@ -12,6 +13,17 @@ namespace BankUI.Pages.Banking
 
         MudForm _form = default!;
 
+        private CreateAccountHolderValidator _validator = new CreateAccountHolderValidator();
+
+        private async Task SubmitAsync()
+        {
+            await _form.Validate();
+            if (_form.IsValid)
+            {
+                await SaveAsync();
+            }
+        }
+  
 
         private async Task SaveAsync()
         {

@@ -36,7 +36,7 @@ namespace Application.Features.Accounts.Commands
             //Create/Add the account
             //account = 
             await _unitOfWork.WriteRepositoryFor<Account>().AddAsync(account);
-            await _unitOfWork.CommitAsync(cancellationToken);
+           //await _unitOfWork.CommitAsync(cancellationToken);
             //rv = await _unitOfWork.CommitAsync(cancellationToken);
             //if (rv != 0)
             //{

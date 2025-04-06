@@ -33,7 +33,7 @@ namespace Application.Features.AccountHolders.Commands
                         request.UpdateAccountHolder.LastName, request.UpdateAccountHolder.Email, request.UpdateAccountHolder.ContactNumber);
 
                     await _unitOfWork.WriteRepositoryFor<AccountHolder>().UpdateAsync(updatedAccountHolder);
-                    await _unitOfWork.CommitAsync(cancellationToken);
+                   // await _unitOfWork.CommitAsync(cancellationToken);
 
                     return new ResponseWrapper<int>().Success(updatedAccountHolder.Id, "Account Holder updated successfully.");
                 }

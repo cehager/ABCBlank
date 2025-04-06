@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Application
 {
-    public static class Startup
+    public static class BuilderServicesExtensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {

@@ -12,12 +12,17 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public static class Startup
+    public static class BuilderServicesExtensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            return services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            return services.AddDbContextFactory<ApplicationDbContext>(options =>
+               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                b => b.MigrationsAssembly("Infrastructure")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
+            //return services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+            //b => b.MigrationsAssembly("Infrastructure")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
         }
 
         public static IServiceCollection AddRepositories(this IServiceCollection services)

@@ -62,7 +62,7 @@ namespace Application.Features.Accounts.Commands
                     accountInDb.Balance += request.Transaction.Amount;
                     await _unitOfWork.WriteRepositoryFor<Transaction>().AddAsync(transaction);
                     await _unitOfWork.WriteRepositoryFor<Account>().UpdateAsync(accountInDb);
-                    await _unitOfWork.CommitAsync(cancellationToken);
+                    //await _unitOfWork.CommitAsync(cancellationToken);
                     return new ResponseWrapper<int>().Success(data: transaction.Id, message: "Deposit saved.");
                 }
                

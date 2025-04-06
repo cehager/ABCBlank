@@ -1,6 +1,9 @@
 using Infrastructure;
 using Application;
 using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
+using System;
+using Infrastructure.Context;
 
 namespace WebAPI
 {
@@ -28,7 +31,7 @@ namespace WebAPI
             builder.Services.AddRepositories();
             builder.Services.AddApplicationServices();
 
-            var app = builder.Build();
+                var app = builder.Build();
             app.UseCors("BankUI");
 
 

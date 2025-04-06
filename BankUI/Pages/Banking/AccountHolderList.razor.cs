@@ -12,6 +12,7 @@ namespace BankUI.Pages.Banking
     {
         private List<AccountHolderResponse> AccountHolders { get; set; } = [];
         private bool _loading = true;
+        private Color striped = Color.Dark;
         protected override async Task OnInitializedAsync()
         {
             await LoadAccountHoldersAsync();

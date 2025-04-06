@@ -29,7 +29,7 @@ namespace Application.Features.AccountHolders.Commands
                 if (accountHolderInDb is not null)
                 {
                     await _unitOfWork.WriteRepositoryFor<AccountHolder>().DeleteAsync(accountHolderInDb);
-                    await _unitOfWork.CommitAsync(cancellationToken);
+                    //await _unitOfWork.CommitAsync(cancellationToken);
 
                     return new ResponseWrapper<int>().Success(accountHolderInDb.Id, "Account Holder Deleted Successfully");
                 }

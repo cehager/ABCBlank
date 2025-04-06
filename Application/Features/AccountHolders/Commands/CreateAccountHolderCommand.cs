@@ -17,8 +17,8 @@ namespace Application.Features.AccountHolders.Commands  //put this under a folde
         public CreateAccountHolder CreateAccountHolder { get; set; } //this is the accountholder record / dto
      }
 
-    public class CreateAccountHolderCommandHandler(IUnitOfWork<int> unitOfWork)
-      : IRequestHandler<CreateAccountHolderCommand, ResponseWrapper<int>>
+    public class CreateAccountHolderCommandHandler(IUnitOfWork<int> unitOfWork)  //this is called by the webapi controller add route MediatR Send method
+      : IRequestHandler<CreateAccountHolderCommand, ResponseWrapper<int>>       //IUnitOf Work is created by dependency injection from BuilderServicesExtensions
     {
         private readonly IUnitOfWork<int> _unitOfWork = unitOfWork;
        
@@ -27,7 +27,7 @@ namespace Application.Features.AccountHolders.Commands  //put this under a folde
             var accountHolder = request.CreateAccountHolder.Adapt<AccountHolder>();
 
             await _unitOfWork.WriteRepositoryFor<AccountHolder>().AddAsync(accountHolder);  
-            await _unitOfWork.CommitAsync(cancellationToken);
+            //await _unitOfWork.CommitAsync(cancellationToken);
 
             return new ResponseWrapper<int>().Success(accountHolder.Id, "Account Holder created successfully.");
         }
