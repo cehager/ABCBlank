@@ -93,22 +93,22 @@ namespace Infrastructure.Repositories
         //    return (IAccountingRulesRepositoryAsync<T, TId>)_respositories[type];
         //}
 
-        public void Dispose()  //TODO: remove this method
-        {
-           Dispose(true);
-            GC.SuppressFinalize(this);
-        }
+        //public void Dispose()  //TODO: remove this method
+        //{
+        //   Dispose(true);
+        //    GC.SuppressFinalize(this);
+        //}
 
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    //_context.Dispose();
-                }
-            }
-            disposed = true;
-        }
+        //protected virtual void Dispose(bool disposing)
+        //{
+        //    if (!disposed)
+        //    {
+        //        if (disposing)
+        //        {
+        //            //_context.Dispose();
+        //        }
+        //    }
+        //    disposed = true;
+        //}
     }
 }

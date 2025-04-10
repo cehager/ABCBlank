@@ -19,6 +19,9 @@ namespace Application.Features.AccountHolders.AccountHoldersHandlers
 
         public async Task<ResponseWrapper<int>> Handle(CreateAccountHolderCommand request, CancellationToken cancellationToken)
         {
+            //var type = typeof(CreateAccountHolderCommand).Name;
+            //var typeah = typeof(AccountHolder).Name;
+
             var accountHolder = request.CreateAccountHolder.Adapt<AccountHolder>();
 
             await _unitOfWork.WriteRepositoryFor<AccountHolder>().AddAsync(accountHolder);
